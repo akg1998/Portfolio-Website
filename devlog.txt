@@ -23,3 +23,4 @@
 2026-01-23T03:00:24.749Z: Tweak animations
 2026-01-23T21:35:59.744Z: Refine typography and leading lines
 2026-01-24T20:34:25.937Z: Initialize Spring Boot and Maven dependencies
+2026-01-25T14:28:05.602Z: Configure dynamic VITE_API_BASE_URL
