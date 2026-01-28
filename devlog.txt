@@ -27,3 +27,4 @@
 2026-01-26T19:36:39.361Z: Tweak animations
 2026-01-27T11:47:57.222Z: Update minor CSS tweaks
 2026-01-28T04:49:22.915Z: Clean up backend comments
+2026-01-28T16:02:42.437Z: Extract static data to JSON mapping for Projects
