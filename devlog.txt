@@ -53,3 +53,4 @@
 2026-02-15T03:39:56.568Z: Fix padding styling
 2026-02-15T12:21:02.584Z: Implement slide-up hover reveal for project cards
 2026-02-16T17:56:57.813Z: Optimize imports
+2026-02-16T22:24:57.581Z: Update README with deployment guide
