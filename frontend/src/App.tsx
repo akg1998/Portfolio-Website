@@ -78,6 +78,13 @@ const Hero = () => (
     
     <div className="text-center px-6 max-w-5xl relative z-10">
       <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
+        <motion.div variants={fadeUpVariant} className="flex justify-center mb-8">
+            <div className="relative group cursor-default">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500 rounded-full blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                <div className="relative w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-gray-950/80 shadow-2xl" style={{ backgroundImage: "url('/profile.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#111827' }} />
+            </div>
+        </motion.div>
+        
         <motion.div variants={fadeUpVariant}>
           <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm md:text-base font-bold mb-8 border border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.15)] backdrop-blur-md">
             <span className="relative flex h-3 w-3">
@@ -125,7 +132,7 @@ const About = () => {
             <div className="max-w-6xl mx-auto px-6">
                 <SectionHeading subtitle="Behind the code">About Me</SectionHeading>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[250px]">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-auto md:auto-rows-[250px]">
                     {/* Big Intro Card */}
                     <motion.div 
                         initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}
@@ -139,6 +146,32 @@ const About = () => {
                     </motion.div>
 
                     {/* Location Card */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }}
+                        className="rounded-[2rem] bg-gray-900 border border-gray-800 p-8 flex flex-col items-center justify-center text-center group hover:border-blue-500/50 transition-colors shadow-lg"
+                    >
+                         <div className="w-16 h-16 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform duration-300">
+                             <MapPin className="w-8 h-8"/>
+                         </div>
+                         <h4 className="text-white font-bold text-xl mb-1">Based in</h4>
+                         <p className="text-gray-400 font-medium">Frankfurt, Germany</p>
+                    </motion.div>
+
+                    {/* Profile Photo Card */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }} viewport={{ once: true }}
+                        className="md:col-span-1 md:row-span-2 rounded-[2rem] bg-gray-900 border border-gray-800 overflow-hidden relative group shadow-lg min-h-[250px] md:min-h-full"
+                    >
+                        <div 
+                            className="absolute inset-0 w-full h-full transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                            style={{ backgroundImage: "url('/profile.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#111827' }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent opacity-90 transition-opacity group-hover:opacity-75 duration-500" />
+                        <div className="absolute bottom-0 left-0 p-8 z-10">
+                           <h4 className="text-white font-black text-2xl tracking-tight mb-1">Akshay</h4>
+                           <p className="text-emerald-400 font-bold text-sm uppercase tracking-widest">Developer</p>
+                        </div>
+                    </motion.div>
                     <motion.div 
                         initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }}
                         className="rounded-[2rem] bg-gray-900 border border-gray-800 p-8 flex flex-col items-center justify-center text-center group hover:border-blue-500/50 transition-colors shadow-lg"
