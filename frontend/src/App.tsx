@@ -649,7 +649,7 @@ const Contact = () => {
   );
 };
 
-const Footer = () => (
+const Footer = ({ visitorCount }: { visitorCount: number | null }) => (
   <footer className="py-16 border-t border-gray-900 bg-gray-950 text-center text-gray-500 text-base">
     <div className="flex justify-center gap-8 mb-8">
       <a href="https://github.com/akg1998" target="_blank" rel="noreferrer" className="p-4 rounded-full bg-gray-900 hover:bg-gray-800 hover:text-white transition-all text-gray-400 shadow-lg">
@@ -658,10 +658,19 @@ const Footer = () => (
       <a href="https://www.linkedin.com/in/akshay-ghavale" target="_blank" rel="noreferrer" className="p-4 rounded-full bg-gray-900 hover:bg-blue-600 hover:text-white transition-all text-gray-400 shadow-lg">
         <Linkedin className="w-6 h-6" />
       </a>
-      <a href="mailto:akshayghavale@example.com" className="p-4 rounded-full bg-gray-900 hover:bg-emerald-600 hover:text-white transition-all text-gray-400 shadow-lg">
+      <a href="mailto:akshayghavale1998@gmail.com" className="p-4 rounded-full bg-gray-900 hover:bg-red-600 hover:text-white transition-all text-gray-400 shadow-lg">
         <Mail className="w-6 h-6" />
       </a>
     </div>
+
+    {visitorCount !== null && (
+      <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border border-gray-800 bg-gray-900/50 backdrop-blur-sm mb-6 shadow-lg shadow-blue-500/5">
+        <Users className="w-4 h-4 text-gray-400" />
+        <span className="text-gray-400 font-medium text-sm tracking-wide">Profile Views:</span>
+        <span className="text-white font-bold tabular-nums">{visitorCount.toLocaleString()}</span>
+      </div>
+    )}
+
     <p className="font-semibold text-gray-600 tracking-wide">© {new Date().getFullYear()} Akshay Ghavale</p>
   </footer>
 );
@@ -674,6 +683,21 @@ export default function App() {
     restDelta: 0.001
   });
   const { isDark, toggle: toggleTheme } = useTheme();
+  const [visitorCount, setVisitorCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    let storedId = localStorage.getItem('portfolio_visitor_id');
+    if (!storedId) {
+      storedId = crypto.randomUUID();
+      localStorage.setItem('portfolio_visitor_id', storedId);
+    }
+
+    const rawUrl = (import.meta as any).env.VITE_API_BASE_URL || 'http://localhost:8080';
+    const API_URL = rawUrl.replace(/\/+$/, '');
+    axios.post(`${API_URL}/api/stats/hit`, { visitorId: storedId })
+      .then(res => setVisitorCount(res.data))
+      .catch(err => console.error("Visitor count failed", err));
+  }, []);
 
   return (
     <div className="bg-gray-950 text-gray-100 selection:bg-emerald-500/40 selection:text-white min-h-screen border-t-4 border-emerald-500 font-sans">
@@ -688,7 +712,7 @@ export default function App() {
         <Achievements />
         <Contact />
       </main>
-      <Footer />
+      <Footer visitorCount={visitorCount} />
     </div>
   );
 }
