@@ -2,11 +2,11 @@ package com.portfolio.backend.service;
 
 import com.portfolio.backend.entity.ContactMessage;
 import com.portfolio.backend.repository.ContactMessageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -14,41 +14,64 @@ import java.util.concurrent.CompletableFuture;
 public class ContactService {
 
     private final ContactMessageRepository repository;
-    private final JavaMailSender mailSender;
+    private final RestTemplate restTemplate = new RestTemplate();
 
-    @Autowired
-    public ContactService(ContactMessageRepository repository, JavaMailSender mailSender) {
+    @Value("${resend.api.key:NOT_SET}")
+    private String resendApiKey;
+
+    @Value("${contact.recipient.email:akshayghavale1998@gmail.com}")
+    private String recipientEmail;
+
+    public ContactService(ContactMessageRepository repository) {
         this.repository = repository;
-        this.mailSender = mailSender;
     }
 
     @Transactional
     public ContactMessage saveMessage(ContactMessage message) {
         // Save to DB
         ContactMessage saved = repository.save(message);
-        
-        // Send email notification asynchronously so it never blocks the HTTP thread
+
+        // Send email via Resend HTTP API (port 443, never blocked by cloud firewalls)
         CompletableFuture.runAsync(() -> {
             try {
-                SimpleMailMessage mailMessage = new SimpleMailMessage();
-                mailMessage.setFrom("akshayghavale1998@gmail.com"); // Should match spring.mail.username
-                mailMessage.setTo("akshayghavale1998@gmail.com");
-                mailMessage.setSubject("New Portfolio Contact: " + message.getName());
-                mailMessage.setText(String.format(
+                if ("NOT_SET".equals(resendApiKey)) {
+                    System.err.println("Resend API key not configured. Skipping email.");
+                    return;
+                }
+
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setBearerAuth(resendApiKey);
+
+                String emailBody = String.format(
                     "You received a new message from your portfolio website!\n\n" +
                     "Name: %s\nEmail: %s\n\nMessage:\n%s",
                     message.getName(),
                     message.getEmail(),
                     message.getMessage()
-                ));
-                
-                mailSender.send(mailMessage);
-                System.out.println("Email notification sent successfully.");
+                );
+
+                String jsonPayload = String.format(
+                    "{\"from\":\"Portfolio Contact <onboarding@resend.dev>\"," +
+                    "\"to\":[\"%s\"]," +
+                    "\"subject\":\"New Portfolio Contact: %s\"," +
+                    "\"text\":\"%s\"}",
+                    recipientEmail,
+                    message.getName().replace("\"", "\\\""),
+                    emailBody.replace("\"", "\\\"").replace("\n", "\\n")
+                );
+
+                HttpEntity<String> request = new HttpEntity<>(jsonPayload, headers);
+                ResponseEntity<String> response = restTemplate.postForEntity(
+                    "https://api.resend.com/emails", request, String.class
+                );
+
+                System.out.println("Email sent via Resend! Status: " + response.getStatusCode());
             } catch (Exception e) {
-                System.err.println("Failed to send email. Check SMTP configuration. Error: " + e.getMessage());
+                System.err.println("Failed to send email via Resend. Error: " + e.getMessage());
             }
         });
-        
+
         return saved;
     }
 }
