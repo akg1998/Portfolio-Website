@@ -154,7 +154,7 @@ const Hero = () => (
             See My Work
             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a href="mailto:[EMAIL_ADDRESS]" className="group px-10 py-5 rounded-2xl bg-gray-900/80 text-white text-lg font-bold border border-gray-700 hover:bg-gray-800 hover:border-gray-500 backdrop-blur-sm transition-all flex items-center justify-center gap-3">
+          <a href="mailto:akshayghavale1998@gmail.com" className="group px-10 py-5 rounded-2xl bg-gray-900/80 text-white text-lg font-bold border border-gray-700 hover:bg-gray-800 hover:border-gray-500 backdrop-blur-sm transition-all flex items-center justify-center gap-3">
             Get in touch <Mail className="w-5 h-5 ml-1" />
           </a>
         </motion.div>
