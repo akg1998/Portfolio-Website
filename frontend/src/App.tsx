@@ -90,9 +90,9 @@ const Hero = () => (
         
         <motion.h1 
           variants={fadeUpVariant}
-          className="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-tight"
+          className="text-5xl sm:text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-tight"
         >
-          Building <br className="hidden md:block" />
+          Building <br className="hidden sm:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400">
             Digital Foundations.
           </span>
@@ -125,7 +125,7 @@ const About = () => {
             <div className="max-w-6xl mx-auto px-6">
                 <SectionHeading subtitle="Behind the code">About Me</SectionHeading>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[250px]">
                     {/* Big Intro Card */}
                     <motion.div 
                         initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}
@@ -430,14 +430,18 @@ const Projects = () => {
                             <motion.div 
                                 key={i}
                                 variants={fadeUpVariant}
-                                className="group relative h-80 rounded-[2rem] bg-gray-900/80 backdrop-blur-md border border-gray-800 overflow-hidden shadow-xl"
+                                className="group relative sm:h-80 rounded-[2rem] bg-gray-900/80 backdrop-blur-md border border-gray-800 overflow-hidden shadow-xl flex flex-col"
                             >
                                 {/* Default Visible State */}
-                                <div className="absolute inset-0 p-8 flex flex-col justify-center items-center text-center transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
-                                    <div className="w-20 h-20 rounded-3xl bg-gray-950 border border-gray-800 flex items-center justify-center text-emerald-400 mb-6 shadow-lg group-hover:border-emerald-500/30 transition-colors">
+                                <div className="p-8 flex flex-col justify-center items-center text-center transition-all duration-500 lg:group-hover:opacity-0 lg:group-hover:scale-95 flex-grow">
+                                    <div className="w-20 h-20 shrink-0 rounded-3xl bg-gray-950 border border-gray-800 flex items-center justify-center text-emerald-400 mb-6 shadow-lg lg:group-hover:border-emerald-500/30 transition-colors">
                                         {getProjectIcon(proj.title)}
                                     </div>
                                     <h3 className="text-2xl font-black text-white mb-4 leading-tight">{proj.title}</h3>
+                                    
+                                    {/* Mobile Only Persistent Description */}
+                                    <p className="text-gray-400 text-sm mb-6 lg:hidden font-medium leading-relaxed">{proj.description}</p>
+                                    
                                     <div className="flex flex-wrap justify-center gap-2">
                                         {proj.tech.map((t: string, ti: number) => (
                                             <span key={ti} className="px-3 py-1 text-xs rounded-lg bg-gray-950 border border-gray-800 text-gray-400 font-bold">
@@ -445,12 +449,17 @@ const Projects = () => {
                                             </span>
                                         ))}
                                     </div>
+                                    
+                                    {/* Mobile Only GitHub Button */}
+                                    <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="mt-8 px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-bold flex gap-3 items-center lg:hidden shadow-lg w-full justify-center">
+                                        <Github className="w-5 h-5"/> View on GitHub
+                                    </a>
                                 </div>
 
-                                {/* Hover Reveal State */}
-                                <div className="absolute inset-0 bg-gray-950/95 backdrop-blur-xl flex flex-col justify-center items-center p-8 text-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out border-t-4 border-emerald-500">
+                                {/* Desktop Only Hover Reveal State */}
+                                <div className="hidden lg:flex absolute inset-0 bg-gray-950/95 backdrop-blur-xl flex-col justify-center items-center p-8 text-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out border-t-4 border-emerald-500">
                                     <h3 className="text-xl font-bold text-white mb-4">{proj.title}</h3>
-                                    <p className="text-gray-400 text-sm sm:text-base mb-8 font-medium leading-relaxed">{proj.description}</p>
+                                    <p className="text-gray-400 text-base mb-8 font-medium leading-relaxed">{proj.description}</p>
                                     <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-bold flex gap-3 items-center hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                                         <Github className="w-5 h-5"/> View on GitHub
                                     </a>
@@ -544,14 +553,14 @@ const Contact = () => {
             <div className="max-w-4xl mx-auto px-6">
                 <SectionHeading subtitle="Ready to build something amazing? Reach out.">Let's Collaborate</SectionHeading>
                 
-                <motion.div 
-                    ref={ref}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    variants={fadeUpVariant}
-                    className="p-10 md:p-14 rounded-[3rem] bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 relative shadow-2xl overflow-hidden"
-                >
-                    <div className="absolute top-[-50px] right-[-50px] p-4 opacity-5 pointer-events-none">
+                    <motion.div 
+                        ref={ref}
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                        variants={fadeUpVariant}
+                        className="p-6 sm:p-10 md:p-14 rounded-[2rem] sm:rounded-[3rem] bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 relative shadow-2xl overflow-hidden"
+                    >
+                        <div className="absolute top-[-20px] sm:top-[-50px] right-[-20px] sm:right-[-50px] p-4 opacity-5 pointer-events-none">
                         <Send className="w-64 h-64 text-emerald-500" />
                     </div>
                     
