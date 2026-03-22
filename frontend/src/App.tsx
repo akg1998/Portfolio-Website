@@ -35,7 +35,7 @@ const Navbar = () => (
         <a href="#contact" className="hover:text-white hover:text-emerald-400 transition-colors">Contact</a>
       </div>
       <div className="flex gap-4">
-        <a href="https://github.com/akshayghavale" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
+        <a href="https://github.com/akg1998" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
           <Github className="w-5 h-5" />
         </a>
         <a href="https://www.linkedin.com/in/akshay-ghavale" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
