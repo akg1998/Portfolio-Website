@@ -364,40 +364,37 @@ const Projects = () => {
         // Static fallback if backend is down
         setProjects([
           {
+            title: "CampusFlow",
+            description: "Architected a full-stack university management system with admin panel and student dashboard, featuring RDF graph-based data storage and AWS cloud deployment.",
+            tech: ["React", "Django", "MySQL", "Blazegraph", "AWS"],
+            githubUrl: "https://github.com/akg1998/CampusFlow"
+          },
+          {
             title: "Redefined Login Security",
             description: "Enhanced login security against shoulder surfing using dynamic alphanumeric PINs across randomized token boxes.",
             tech: ["Java", "Security Architecture", "Algorithms"],
-            githubUrl: "https://github.com/akshayghavale/redefined-login"
+            githubUrl: "https://github.com/akg1998/Revivify"
           },
           {
             title: "Intelligent Surveillance System",
             description: "Architected a real-time violence detection system utilizing CNN and LSTM neural networks via Python and Flask.",
             tech: ["Python", "Flask", "Deep Learning"],
-            githubUrl: "https://github.com/akshayghavale/surveillance-system"
-          },
-          {
-            title: "Trip Planner Logistics",
-            description: "Developed an interactive routing application that generates targeted travel itineraries using mapping APIs.",
-            tech: ["Android", "Java", "Maps API"],
-            githubUrl: "https://github.com/akshayghavale/trip-planner"
+            githubUrl: "https://github.com/akg1998/Intelligent-Surveiilance-System"
           },
           {
             title: "Blood Bank Sync",
             description: "Built a centralized inventory platform linking donors with hospitals to accelerate emergency medical responses.",
-            tech: ["Android", "Java", "SQLite"],
-            githubUrl: "https://github.com/akshayghavale/blood-bank"
+            tech: ["Android", "Java", "SQLite"]
           },
           {
             title: "NoticeBoy Digital Portal",
             description: "Created a digital submission portal enabling seamless academic grading and real-time inline instructor feedback.",
-            tech: ["Android", "Java", "Firebase"],
-            githubUrl: "https://github.com/akshayghavale/noticeboy"
+            tech: ["Android", "Java", "Firebase"]
           },
           {
             title: "Entity Management System",
             description: "Programmed a high-integrity student reporting backend utilizing custom Linked Lists and rigorous Data Structures.",
-            tech: ["C++", "Data Structures", "Algorithms"],
-            githubUrl: "https://github.com/akshayghavale/student-management"
+            tech: ["C++", "Data Structures", "Algorithms"]
           }
         ]);
       })
@@ -405,6 +402,7 @@ const Projects = () => {
   }, []);
 
   const getProjectIcon = (title: string) => {
+    if (title.includes("Campus")) return <Users className="w-7 h-7" />;
     if (title.includes("Login")) return <Shield className="w-7 h-7" />;
     if (title.includes("Surveillance")) return <Camera className="w-7 h-7" />;
     if (title.includes("Trip")) return <Map className="w-7 h-7" />;
@@ -613,7 +611,7 @@ const Contact = () => {
 const Footer = () => (
   <footer className="py-16 border-t border-gray-900 bg-gray-950 text-center text-gray-500 text-base">
     <div className="flex justify-center gap-8 mb-8">
-      <a href="https://github.com/akshayghavale" target="_blank" rel="noreferrer" className="p-4 rounded-full bg-gray-900 hover:bg-gray-800 hover:text-white transition-all text-gray-400 shadow-lg">
+      <a href="https://github.com/akg1998" target="_blank" rel="noreferrer" className="p-4 rounded-full bg-gray-900 hover:bg-gray-800 hover:text-white transition-all text-gray-400 shadow-lg">
         <Github className="w-6 h-6" />
       </a>
       <a href="https://www.linkedin.com/in/akshay-ghavale" target="_blank" rel="noreferrer" className="p-4 rounded-full bg-gray-900 hover:bg-blue-600 hover:text-white transition-all text-gray-400 shadow-lg">
