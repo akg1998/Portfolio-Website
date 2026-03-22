@@ -480,19 +480,23 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* Mobile Only GitHub Button */}
-                  <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="mt-8 px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-bold flex gap-3 items-center lg:hidden shadow-lg w-full justify-center">
-                    <Github className="w-5 h-5" /> View on GitHub
-                  </a>
+                  {/* Mobile Only GitHub Button or Description */}
+                  {proj.githubUrl ? (
+                    <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="mt-8 px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-bold flex gap-3 items-center lg:hidden shadow-lg w-full justify-center">
+                      <Github className="w-5 h-5" /> View on GitHub
+                    </a>
+                  ) : null}
                 </div>
 
                 {/* Desktop Only Hover Reveal State */}
                 <div className="hidden lg:flex absolute inset-0 bg-gray-950/95 backdrop-blur-xl flex-col justify-center items-center p-8 text-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out border-t-4 border-emerald-500">
                   <h3 className="text-xl font-bold text-white mb-4">{proj.title}</h3>
                   <p className="text-gray-400 text-base mb-8 font-medium leading-relaxed">{proj.description}</p>
-                  <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-bold flex gap-3 items-center hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                    <Github className="w-5 h-5" /> View on GitHub
-                  </a>
+                  {proj.githubUrl ? (
+                    <a href={proj.githubUrl} target="_blank" rel="noreferrer" className="px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-bold flex gap-3 items-center hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                      <Github className="w-5 h-5" /> View on GitHub
+                    </a>
+                  ) : null}
                 </div>
               </motion.div>
             ))
