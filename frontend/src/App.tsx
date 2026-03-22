@@ -544,7 +544,8 @@ const Contact = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const API_URL = (import.meta as any).env.VITE_API_BASE_URL || 'http://localhost:8080';
+      const rawUrl = (import.meta as any).env.VITE_API_BASE_URL || 'http://localhost:8080';
+      const API_URL = rawUrl.replace(/\/+$/, '');
       await axios.post(`${API_URL}/api/contact`, data);
       setStatus({ type: 'success', msg: 'Message securely transmitted. I will be in touch!' });
       (e.target as HTMLFormElement).reset();
