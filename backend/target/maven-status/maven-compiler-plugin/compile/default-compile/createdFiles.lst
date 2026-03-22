@@ -1,0 +1,8 @@
+com\portfolio\backend\controller\HealthController.class
+com\portfolio\backend\repository\ContactMessageRepository.class
+com\portfolio\backend\controller\ProjectController.class
+com\portfolio\backend\service\ContactService.class
+com\portfolio\backend\config\WebConfig.class
+com\portfolio\backend\BackendApplication.class
+com\portfolio\backend\entity\ContactMessage.class
+com\portfolio\backend\controller\ContactController.class
