@@ -57,8 +57,20 @@ const Navbar = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
         <a href="#contact" className="hover:text-white hover:text-emerald-400 transition-colors">Contact</a>
       </div>
       <div className="flex gap-4 items-center">
-        <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme">
-          {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+        <button 
+          onClick={toggleTheme} 
+          className="relative flex items-center w-16 h-8 rounded-full p-1 cursor-pointer transition-colors duration-300"
+          style={{ backgroundColor: isDark ? '#1e293b' : '#bfdbfe', border: isDark ? '1px solid #334155' : '1px solid #93c5fd' }}
+          aria-label="Toggle theme"
+        >
+          <Sun className="w-4 h-4 absolute left-1.5 top-1/2 -translate-y-1/2" style={{ color: isDark ? '#475569' : '#f59e0b' }} />
+          <Moon className="w-4 h-4 absolute right-1.5 top-1/2 -translate-y-1/2" style={{ color: isDark ? '#94a3b8' : '#93c5fd' }} />
+          <motion.div 
+            className="w-6 h-6 rounded-full shadow-md"
+            style={{ backgroundColor: isDark ? '#e2e8f0' : '#ffffff' }}
+            animate={{ x: isDark ? 32 : 0 }}
+            transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+          />
         </button>
         <a href="https://github.com/akg1998" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
           <Github className="w-5 h-5" />
@@ -650,7 +662,7 @@ const Footer = () => (
         <Mail className="w-6 h-6" />
       </a>
     </div>
-    <p className="font-semibold text-gray-600 tracking-wide">© {new Date().getFullYear()} Akshay Ghavale. Crafted with precision.</p>
+    <p className="font-semibold text-gray-600 tracking-wide">© {new Date().getFullYear()} Akshay Ghavale</p>
   </footer>
 );
 
