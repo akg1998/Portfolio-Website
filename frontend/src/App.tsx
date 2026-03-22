@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useSpring, useInView } from 'framer-motion';
-import { Github, Linkedin, Mail, Code2, Database, Cloud, Terminal, CheckCircle2, Send, MapPin, ChevronRight, Briefcase, Award, BookOpen, Shield, Camera, Map, Activity, FileText, Users } from 'lucide-react';
+import { Github, Linkedin, Mail, Code2, Database, Cloud, Terminal, CheckCircle2, Send, MapPin, ChevronRight, Briefcase, Award, BookOpen, Shield, Camera, Map, Activity, FileText, Users, Sun, Moon } from 'lucide-react';
 import axios from 'axios';
 import clsx from 'clsx';
 
@@ -20,9 +20,31 @@ const staggerContainer = {
   }
 };
 
+// --- Theme Hook ---
+const useTheme = () => {
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') !== 'light';
+    }
+    return true;
+  });
+
+  useEffect(() => {
+    if (isDark) {
+      document.body.classList.remove('light-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.add('light-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDark]);
+
+  return { isDark, toggle: () => setIsDark(prev => !prev) };
+};
+
 // --- Components ---
 
-const Navbar = () => (
+const Navbar = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => void }) => (
   <nav className="fixed top-0 w-full z-50 bg-gray-950/80 backdrop-blur-md border-b border-gray-800 shadow-[0_0_30px_rgba(0,0,0,0.8)]">
     <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <span className="text-2xl font-black tracking-tighter bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 bg-clip-text text-transparent">
@@ -34,7 +56,10 @@ const Navbar = () => (
         <a href="#projects" className="hover:text-white hover:text-emerald-400 transition-colors">Projects</a>
         <a href="#contact" className="hover:text-white hover:text-emerald-400 transition-colors">Contact</a>
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-center">
+        <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme">
+          {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+        </button>
         <a href="https://github.com/akg1998" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
           <Github className="w-5 h-5" />
         </a>
@@ -632,11 +657,12 @@ export default function App() {
     damping: 30,
     restDelta: 0.001
   });
+  const { isDark, toggle: toggleTheme } = useTheme();
 
   return (
     <div className="bg-gray-950 text-gray-100 selection:bg-emerald-500/40 selection:text-white min-h-screen border-t-4 border-emerald-500 font-sans">
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500 z-[100] origin-left shadow-[0_0_15px_rgba(59,130,246,0.8)]" style={{ scaleX }} />
-      <Navbar />
+      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <main>
         <Hero />
         <About />

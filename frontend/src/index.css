@@ -7,3 +7,267 @@
     scroll-behavior: smooth;
   }
 }
+
+/* ============================================ */
+/*         LIGHT THEME OVERRIDES                */
+/* ============================================ */
+
+/* --- Core Backgrounds --- */
+body.light-theme {
+  background-color: #f8fafc !important;
+  color: #1e293b !important;
+}
+
+body.light-theme .bg-gray-950 {
+  background-color: #f8fafc !important;
+}
+
+body.light-theme .bg-gray-950\/80 {
+  background-color: rgba(248, 250, 252, 0.9) !important;
+}
+
+body.light-theme .bg-gray-900 {
+  background-color: #ffffff !important;
+}
+
+body.light-theme .bg-gray-900\/80 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.light-theme .bg-gray-900\/40 {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* --- Text Colors --- */
+body.light-theme .text-white {
+  color: #0f172a !important;
+}
+
+body.light-theme .text-gray-100 {
+  color: #1e293b !important;
+}
+
+body.light-theme .text-gray-300 {
+  color: #475569 !important;
+}
+
+body.light-theme .text-gray-400 {
+  color: #64748b !important;
+}
+
+body.light-theme .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+body.light-theme .text-gray-600 {
+  color: #64748b !important;
+}
+
+/* --- Border Colors --- */
+body.light-theme .border-gray-800 {
+  border-color: #e2e8f0 !important;
+}
+
+body.light-theme .border-gray-800\/50 {
+  border-color: rgba(226, 232, 240, 0.5) !important;
+}
+
+body.light-theme .border-gray-900 {
+  border-color: #e2e8f0 !important;
+}
+
+body.light-theme .border-gray-700 {
+  border-color: #cbd5e1 !important;
+}
+
+/* --- Card & Component Backgrounds --- */
+body.light-theme .bg-gray-950\/50 {
+  background-color: rgba(241, 245, 249, 0.6) !important;
+}
+
+body.light-theme .bg-gray-950\/95 {
+  background-color: rgba(241, 245, 249, 0.97) !important;
+}
+
+/* --- Gradients --- */
+body.light-theme .from-gray-900 {
+  --tw-gradient-from: #ffffff var(--tw-gradient-from-position) !important;
+}
+
+body.light-theme .to-gray-950 {
+  --tw-gradient-to: #f1f5f9 var(--tw-gradient-to-position) !important;
+}
+
+body.light-theme .from-gray-950 {
+  --tw-gradient-from: #f8fafc var(--tw-gradient-from-position) !important;
+}
+
+/* --- Shadows --- */
+body.light-theme .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03) !important;
+}
+
+body.light-theme .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04) !important;
+}
+
+body.light-theme .shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light-theme .shadow-\[0_0_30px_rgba\(0\2c 0\2c 0\2c 0\.8\)\] {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* --- Input Fields --- */
+body.light-theme input,
+body.light-theme textarea {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+body.light-theme input::placeholder,
+body.light-theme textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+body.light-theme input:focus,
+body.light-theme textarea:focus {
+  background-color: #ffffff !important;
+}
+
+/* --- Navbar blur --- */
+body.light-theme nav {
+  background-color: rgba(248, 250, 252, 0.85) !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+/* --- Hover overrides --- */
+body.light-theme .hover\:text-white:hover {
+  color: #0f172a !important;
+}
+
+body.light-theme .hover\:bg-gray-800:hover {
+  background-color: #f1f5f9 !important;
+}
+
+body.light-theme .hover\:bg-gray-900:hover {
+  background-color: #f1f5f9 !important;
+}
+
+body.light-theme .hover\:bg-gray-900\/80:hover {
+  background-color: rgba(241, 245, 249, 0.9) !important;
+}
+
+body.light-theme .hover\:border-gray-600:hover {
+  border-color: #cbd5e1 !important;
+}
+
+body.light-theme .hover\:border-gray-500:hover {
+  border-color: #94a3b8 !important;
+}
+
+/* --- Accent colors stay vibrant in light mode --- */
+body.light-theme .text-blue-400 {
+  color: #2563eb !important;
+}
+
+body.light-theme .text-emerald-400 {
+  color: #059669 !important;
+}
+
+body.light-theme .text-yellow-400 {
+  color: #d97706 !important;
+}
+
+body.light-theme .bg-blue-500\/10 {
+  background-color: rgba(37, 99, 235, 0.08) !important;
+}
+
+body.light-theme .border-blue-500\/30 {
+  border-color: rgba(37, 99, 235, 0.2) !important;
+}
+
+body.light-theme .border-blue-500\/20 {
+  border-color: rgba(37, 99, 235, 0.15) !important;
+}
+
+body.light-theme .bg-emerald-500\/10 {
+  background-color: rgba(5, 150, 105, 0.08) !important;
+}
+
+/* --- Animated blobs in light theme --- */
+body.light-theme .bg-blue-600\/20 {
+  background-color: rgba(37, 99, 235, 0.08) !important;
+}
+
+body.light-theme .bg-emerald-600\/20 {
+  background-color: rgba(5, 150, 105, 0.08) !important;
+}
+
+body.light-theme .bg-indigo-600\/10 {
+  background-color: rgba(79, 70, 229, 0.06) !important;
+}
+
+/* --- Footer social icons --- */
+body.light-theme .hover\:bg-blue-600:hover {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+body.light-theme .hover\:bg-emerald-600:hover {
+  background-color: #059669 !important;
+  color: #ffffff !important;
+}
+
+/* --- Scroll bar --- */
+body.light-theme::-webkit-scrollbar {
+  width: 8px;
+}
+
+body.light-theme::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+body.light-theme::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* --- Theme toggle button --- */
+.theme-toggle {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .theme-toggle {
+  color: #64748b;
+}
+
+body.light-theme .theme-toggle:hover {
+  color: #0f172a;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* --- Smooth theme transition --- */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body * {
+  transition: background-color 0.4s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
