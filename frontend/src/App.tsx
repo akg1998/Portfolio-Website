@@ -514,7 +514,7 @@ const Achievements = () => {
     {
       icon: <Award className="w-8 h-8 text-yellow-400" />,
       title: "Hackathon Winner",
-      description: "Led the backend team to victory by developing a hyper-scalable data aggregation service within 48 hours."
+      description: "The team built a hyper-scalable data aggregation app within 48 hours."
     },
     {
       icon: <BookOpen className="w-8 h-8 text-blue-400" />,
