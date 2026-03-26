@@ -57,15 +57,15 @@ const Navbar = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
         <a href="#contact" className="hover:text-white hover:text-emerald-400 transition-colors">Contact</a>
       </div>
       <div className="flex gap-4 items-center">
-        <button 
-          onClick={toggleTheme} 
+        <button
+          onClick={toggleTheme}
           className="relative flex items-center w-16 h-8 rounded-full p-1 cursor-pointer transition-colors duration-300"
           style={{ backgroundColor: isDark ? '#1e293b' : '#bfdbfe', border: isDark ? '1px solid #334155' : '1px solid #93c5fd' }}
           aria-label="Toggle theme"
         >
           <Sun className="w-4 h-4 absolute left-1.5 top-1/2 -translate-y-1/2" style={{ color: isDark ? '#475569' : '#f59e0b' }} />
           <Moon className="w-4 h-4 absolute right-1.5 top-1/2 -translate-y-1/2" style={{ color: isDark ? '#94a3b8' : '#93c5fd' }} />
-          <motion.div 
+          <motion.div
             className="w-6 h-6 rounded-full shadow-md"
             style={{ backgroundColor: isDark ? '#e2e8f0' : '#ffffff' }}
             animate={{ x: isDark ? 32 : 0 }}
@@ -120,16 +120,6 @@ const Hero = () => (
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500 rounded-full blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
             <div className="relative w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-gray-950/80 shadow-2xl" style={{ backgroundImage: "url('/profile.png')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#111827' }} />
           </div>
-        </motion.div>
-
-        <motion.div variants={fadeUpVariant}>
-          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm md:text-base font-bold mb-8 border border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.15)] backdrop-blur-md">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-            </span>
-            Available for New Opportunities
-          </span>
         </motion.div>
 
         <motion.h1
